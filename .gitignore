@@ -1,4 +1,6 @@
 ### Eclipse ###
+.idea/
+Mi-Huella.iml
 .metadata
 bin/
 tmp/
