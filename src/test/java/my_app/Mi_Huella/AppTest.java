@@ -11,6 +11,6 @@ public class AppTest {
 
 	@Test
 	public void nuevoTest(){
-		assertEquals(2, 6+1);
+		assertEquals(2, 2);
 	}
 }

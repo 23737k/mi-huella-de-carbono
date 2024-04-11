@@ -1,0 +1,13 @@
+﻿actividad,tipo-de-consumo,valor-consumo,periodicidad-consumo,periodo-de-imputacion
+combustion-fija,gasoil,300000,anual,2023
+combustion-fija,kerosene,150000,anual,2023
+combustion-fija,leña,200,anual,2023
+combustion-fija,gas-natural,250000,anual,2023
+combustion-movil,gasoil,200000,anual,2023
+combustion-movil,gnc,150000,anual,2023
+combustion-movil,nafta,180000,anual,2023
+combustion-movil,nafta,190000,anual,2023
+combustion-movil,nafta,200000,anual,2023
+electricidad,electricidad,5000000,anual,2023
+electricidad,electricidad,5200000,anual,2023
+electricidad,electricidad,5500000,anual,2023
