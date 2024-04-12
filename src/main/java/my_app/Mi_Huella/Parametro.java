@@ -12,6 +12,11 @@ public class Parametro {
   public Parametro() {
   }
 
+  public Parametro(String tipoDeConsumo, Double fe) {
+    this.tipoDeConsumo = tipoDeConsumo;
+    this.fe = fe;
+  }
+
   //region getters y setters
   public String getTipoDeConsumo() {
     return tipoDeConsumo;

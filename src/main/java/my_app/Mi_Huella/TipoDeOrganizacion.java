@@ -1,9 +1,10 @@
 package my_app.Mi_Huella;
 
 public class TipoDeOrganizacion {
+	private String nombre;
 
-	public TipoDeOrganizacion() {
-		// TODO Auto-generated constructor stub
+
+	public TipoDeOrganizacion(String nombre) {
+		this.nombre = nombre;
 	}
-
 }

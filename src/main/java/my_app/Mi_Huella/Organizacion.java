@@ -10,15 +10,23 @@ public class Organizacion {
 	private Clasificacion clasificacion;
 	private UbicacionGeografica ubicacion;
 	private List<Sector> sectores;
-	private List<Area> areas;
+	//private List<Area> areas;
 	private List<Miembro> miembros;
-	
-	
-	public Organizacion() {
+
+	public Organizacion(String razonSocial, String cuil, TipoDeOrganizacion tipoDeOrganizacion,
+											Clasificacion clasificacion, UbicacionGeografica ubicacion,
+											List<Sector> sectores /*,List<Area> areas*/, List<Miembro> miembros) {
+		this.razonSocial = razonSocial;
+		this.cuil = cuil;
+		this.tipoDeOrganizacion = tipoDeOrganizacion;
+		this.clasificacion = clasificacion;
+		this.ubicacion = ubicacion;
+		this.sectores = sectores;
+//		this.areas = areas;
+		this.miembros = miembros;
 	}
 
-	
-	
+
 	//region getters-setters
 	public String getRazonSocial() {
 		return razonSocial;
@@ -80,14 +88,14 @@ public class Organizacion {
 	}
 
 
-	public List<Area> getAreas() {
-		return areas;
-	}
-
-
-	public void setAreas(List<Area> areas) {
-		this.areas = areas;
-	}
+//	public List<Area> getAreas() {
+//		return areas;
+//	}
+//
+//
+//	public void setAreas(List<Area> areas) {
+//		this.areas = areas;
+//	}
 
 
 	public List<Miembro> getMiembros() {

@@ -10,9 +10,18 @@ public class Medicion {
   @CsvBindByName(column = "valor-consumo")
   private Double valorConsumo;
   @CsvBindByName(column = "periodicidad-consumo")
-  private String periodicidadConsumo;
+  private Periodicidad periodicidadConsumo;
   @CsvBindByName(column = "periodo-de-imputacion")
   private String periodoDeImputacion;
+
+  public Medicion(String actividad, String tipoDeConsumo, Double valorConsumo,
+                  Periodicidad periodicidadConsumo, String periodoDeImputacion) {
+    this.actividad = actividad;
+    this.tipoDeConsumo = tipoDeConsumo;
+    this.valorConsumo = valorConsumo;
+    this.periodicidadConsumo = periodicidadConsumo;
+    this.periodoDeImputacion = periodoDeImputacion;
+  }
 
   public Medicion() {
   }
@@ -42,16 +51,16 @@ public class Medicion {
     this.valorConsumo = valorConsumo;
   }
 
-  public String getPeriodicidadConsumo() {
+  public Periodicidad getPeriodicidadConsumo() {
     return periodicidadConsumo;
   }
 
-  public void setPeriodicidadConsumo(String periodicidadConsumo) {
+  public void setPeriodicidadConsumo(Periodicidad periodicidadConsumo) {
     this.periodicidadConsumo = periodicidadConsumo;
   }
 
   public String getPeriodoDeImputacion() {
-    return periodoDeImputacion;
+    return this.periodoDeImputacion;
   }
 
   public void setPeriodoDeImputacion(String periodoDeImputacion) {
