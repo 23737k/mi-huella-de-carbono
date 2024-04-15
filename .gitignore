@@ -2,6 +2,7 @@
 .idea/
 *.ipr
 Mi-Huella.iml
+Mi-Huella.ipr
 .metadata
 bin/
 tmp/
