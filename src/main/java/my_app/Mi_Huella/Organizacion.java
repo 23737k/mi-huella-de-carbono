@@ -3,7 +3,7 @@ package my_app.Mi_Huella;
 import java.util.List;
 
 public class Organizacion {
-	
+	private int id;
 	private String razonSocial;
 	private String cuil;
 	private TipoDeOrganizacion tipoDeOrganizacion;

@@ -2,6 +2,7 @@
 <head>
 </head>
 <body>
-	 <%= request.getLocale() %>
+	 La hora del sistema es <%=  %>
+	 
 </body>
 </html>

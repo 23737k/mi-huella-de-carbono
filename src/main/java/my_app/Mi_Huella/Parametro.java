@@ -1,37 +1,53 @@
 package my_app.Mi_Huella;
 
 import com.opencsv.bean.CsvBindByName;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "parametros")
 public class Parametro {
-  @CsvBindByName(column = "tipo-de-consumo")
-  private String tipoDeConsumo;
-  @CsvBindByName
-  private Double fe;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	@CsvBindByName(column = "tipo-de-consumo")
+	private String tipoDeConsumo;
+	@CsvBindByName
+	private Double fe;
 
-  //CONSTRUCTOR SIN PARAMETROS
-  public Parametro() {
-  }
+	// CONSTRUCTOR SIN PARAMETROS
+	public Parametro() {
+	}
 
-  public Parametro(String tipoDeConsumo, Double fe) {
-    this.tipoDeConsumo = tipoDeConsumo;
-    this.fe = fe;
-  }
+	public Parametro(String tipoDeConsumo, Double fe) {
+		this.tipoDeConsumo = tipoDeConsumo;
+		this.fe = fe;
+	}
 
-  //region getters y setters
-  public String getTipoDeConsumo() {
-    return tipoDeConsumo;
-  }
+	// region getters y setters
+	
+	public int getId() {
+		return id;
+	}
 
-  public void setTipoDeConsumo(String tipoDeConsumo) {
-    this.tipoDeConsumo = tipoDeConsumo;
-  }
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public String getTipoDeConsumo() {
+		return tipoDeConsumo;
+	}
 
-  public Double getFe() {
-    return fe;
-  }
+	public void setTipoDeConsumo(String tipoDeConsumo) {
+		this.tipoDeConsumo = tipoDeConsumo;
+	}
 
-  public void setFe(Double fe) {
-    this.fe = fe;
-  }
-  //endregion getters y setters
+	public Double getFe() {
+		return fe;
+	}
+
+	public void setFe(Double fe) {
+		this.fe = fe;
+	}
+	// endregion getters y setters
+
 }
