@@ -1,14 +1,20 @@
 package my_app.Mi_Huella;
 
 import java.sql.*;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@SpringBootApplication
 public class App {
   public static void main(String[] args) {
 
+	  SpringApplication.run(App.class,args);
+	  System.out.println("Executed Main Application");
+	  
+	  
 	  final String url = "jdbc:mysql://sql10.freesqldatabase.com:3306/sql10699337";
 	  final String user = "sql10699337";
 	  final String pass = "MLeR2Lz8Ii";
@@ -29,7 +35,7 @@ public class App {
 	 Session session = sessionFactory.openSession();
 	 
 	 try {
-		Parametro parametro = new Parametro("gasoil",3.0);
+		Parametro parametro = new Parametro("nafta",3.0);
 		session.beginTransaction();
 		session.persist(parametro);
 		session.getTransaction().commit();
