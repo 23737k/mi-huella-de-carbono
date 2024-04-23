@@ -6,7 +6,7 @@ import lombok.*;
 public class Medicion {
   @CsvBindByName(column = "actividad")
   @Getter @Setter
-  private String actividad;
+  private Actividad actividad;
   @CsvBindByName(column = "tipo-de-consumo")
   @Getter @Setter
   private String tipoDeConsumo;
@@ -20,7 +20,7 @@ public class Medicion {
   @Getter @Setter
   private String periodoDeImputacion;
 
-  public Medicion(String actividad, String tipoDeConsumo, Double valorConsumo,
+  public Medicion(Actividad actividad, String tipoDeConsumo, Double valorConsumo,
                   Periodicidad periodicidadConsumo, String periodoDeImputacion) {
     this.actividad = actividad;
     this.tipoDeConsumo = tipoDeConsumo;

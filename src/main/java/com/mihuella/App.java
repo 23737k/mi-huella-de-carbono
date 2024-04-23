@@ -31,12 +31,13 @@ public class App {
 		e.printStackTrace();					//esto hace que nos muestre que error hubo. Sino no muestra nada. Es muy util
 	}
 	  
-	  
-	 SessionFactory sessionFactory =  new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Parametro.class).buildSessionFactory();
+	  //Ademas de las anotaciones de JPA debo agregar las clases que van a ser persistidas (entities).
+	  //Aqui agrego las clases Parametro y Mediciones. Mas adelante veremos como hacer esto de forma automatica con la ayuda de SpringBoot
+	 SessionFactory sessionFactory =  new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Parametro.class).addAnnotatedClass(Actividad.class).buildSessionFactory();
 	 Session session = sessionFactory.openSession();
 	 
 	 try {
-		Parametro parametro = new Parametro("nafta",3.0);
+		Parametro parametro = new Parametro(new Actividad("combustion-fija"),"nafta",3.0);
 		session.beginTransaction();
 		session.persist(parametro);
 		session.getTransaction().commit();
@@ -46,7 +47,6 @@ public class App {
 		session.close();
 	}
 	 
-	//CalculoHUFacade.mostrarCalculoHuella(args);
   }
 
 }

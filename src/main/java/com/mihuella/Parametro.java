@@ -1,7 +1,5 @@
 package com.mihuella;
 
-import com.opencsv.bean.CsvBindByName;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,10 +12,11 @@ public class Parametro {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Getter @Setter
 	private int id;
-	@CsvBindByName(column = "tipo-de-consumo")
+	@Getter @Setter
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Actividad actividad;
 	@Getter @Setter
 	private String tipoDeConsumo;
-	@CsvBindByName
 	@Getter @Setter
 	private Double fe;
 
@@ -25,9 +24,10 @@ public class Parametro {
 	public Parametro() {
 	}
 
-	public Parametro(String tipoDeConsumo, Double fe) {
+	public Parametro(Actividad actividad, String tipoDeConsumo, Double fe) {
 		this.tipoDeConsumo = tipoDeConsumo;
 		this.fe = fe;
+		this.actividad = actividad;
 	}
 
 	

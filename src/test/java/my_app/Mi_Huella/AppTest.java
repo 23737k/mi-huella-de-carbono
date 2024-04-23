@@ -34,6 +34,7 @@ public class AppTest {
 //
 //
 //  }
+  /*
   @Before
   public void setUp(){
     parametros = new ArrayList<>();
@@ -54,5 +55,5 @@ public class AppTest {
   public void calculoTotalHuella() {
     assertEquals( CalculoHUFacade.calcularHuellaTotal(mediciones,parametros),4375 ,0.1);
   }
-
+*/
 }

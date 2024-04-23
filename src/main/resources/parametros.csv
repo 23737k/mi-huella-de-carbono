@@ -1,13 +1,10 @@
-tipo-de-consumo, fe
-gasoil,2.5
-kerosene,2.0
-leña,0.5
-gas-natural,1.8
-gasoil,3.0
-gnc,2.2
-nafta,2.7
-nafta,2.7
-nafta,2.7
-electricidad,0.7
-electricidad,0.7
-electricidad,0.7
+actividad, tipo-de-consumo, fe
+combustion-fija, gasoil,2.5
+combustion-fija, gas-natural, 2.1
+combustion-fija, kerosene,2.0
+combustion-fija, leña,0.5
+combustion-fija, nafta, 2.0
+combustion-movil, gnc,2.2
+combustion-movil, gasoil,3.0
+combustion-movil, nafta,2.7
+electricidad, electricidad,0.7
