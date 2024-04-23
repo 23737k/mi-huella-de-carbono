@@ -1,4 +1,4 @@
-package my_app.Mi_Huella;
+package com.mihuella;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;

@@ -1,4 +1,4 @@
-package my_app.Mi_Huella;
+package com.mihuella;
 
 public class Tramo {
   private UbicacionGeografica inicio;

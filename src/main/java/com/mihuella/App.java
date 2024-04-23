@@ -1,4 +1,4 @@
-package my_app.Mi_Huella;
+package com.mihuella;
 
 import java.sql.*;
 import org.hibernate.Session;
@@ -40,6 +40,7 @@ public class App {
 		session.persist(parametro);
 		session.getTransaction().commit();
 		session.close();
+		
 	} finally {
 		session.close();
 	}

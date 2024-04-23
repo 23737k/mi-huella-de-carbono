@@ -7,6 +7,11 @@ import java.util.List;
 import org.junit.*;
 import org.w3c.dom.ls.LSException;
 
+import com.mihuella.CalculoHUFacade;
+import com.mihuella.Medicion;
+import com.mihuella.Parametro;
+import com.mihuella.Periodicidad;
+
 /**
  * Unit test for simple App.
  */

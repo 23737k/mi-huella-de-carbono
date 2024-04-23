@@ -1,4 +1,4 @@
-package my_app.Mi_Huella.controller;
+package com.mihuella.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

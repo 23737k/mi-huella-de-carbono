@@ -1,4 +1,4 @@
-package my_app.Mi_Huella;
+package com.mihuella;
 
 import java.util.List;
 import net.sourceforge.argparse4j.ArgumentParsers;
