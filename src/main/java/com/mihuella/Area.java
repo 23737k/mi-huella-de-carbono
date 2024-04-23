@@ -1,9 +1,12 @@
 package com.mihuella;
+import lombok.*;
 
 public class Area {
-  private String nombre;
+	
+	@Getter @Setter
+	private String nombre;
 
-  public Area(String nombre) {
-    this.nombre = nombre;
-  }
+	public Area(String nombre) {
+		this.nombre = nombre;
+	}
 }

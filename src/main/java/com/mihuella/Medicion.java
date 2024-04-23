@@ -1,17 +1,23 @@
 package com.mihuella;
 
 import com.opencsv.bean.CsvBindByName;
+import lombok.*;
 
 public class Medicion {
   @CsvBindByName(column = "actividad")
+  @Getter @Setter
   private String actividad;
   @CsvBindByName(column = "tipo-de-consumo")
+  @Getter @Setter
   private String tipoDeConsumo;
   @CsvBindByName(column = "valor-consumo")
+  @Getter @Setter
   private Double valorConsumo;
   @CsvBindByName(column = "periodicidad-consumo")
+  @Getter @Setter
   private Periodicidad periodicidadConsumo;
   @CsvBindByName(column = "periodo-de-imputacion")
+  @Getter @Setter
   private String periodoDeImputacion;
 
   public Medicion(String actividad, String tipoDeConsumo, Double valorConsumo,
@@ -26,46 +32,5 @@ public class Medicion {
   public Medicion() {
   }
 
-  //region getters-setters
-  public String getActividad() {
-    return actividad;
-  }
-
-  public void setActividad(String actividad) {
-    this.actividad = actividad;
-  }
-
-  public String getTipoDeConsumo() {
-    return tipoDeConsumo;
-  }
-
-  public void setTipoDeConsumo(String tipoDeConsumo) {
-    this.tipoDeConsumo = tipoDeConsumo;
-  }
-
-  public Double getValorConsumo() {
-    return valorConsumo;
-  }
-
-  public void setValorConsumo(Double valorConsumo) {
-    this.valorConsumo = valorConsumo;
-  }
-
-  public Periodicidad getPeriodicidadConsumo() {
-    return periodicidadConsumo;
-  }
-
-  public void setPeriodicidadConsumo(Periodicidad periodicidadConsumo) {
-    this.periodicidadConsumo = periodicidadConsumo;
-  }
-
-  public String getPeriodoDeImputacion() {
-    return this.periodoDeImputacion;
-  }
-
-  public void setPeriodoDeImputacion(String periodoDeImputacion) {
-    this.periodoDeImputacion = periodoDeImputacion;
-  }
-  //endregion getters-setters
 }
 

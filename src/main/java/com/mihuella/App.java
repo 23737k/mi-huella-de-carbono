@@ -22,7 +22,8 @@ public class App {
 	  try {
 		System.out.println("Intentando conectar con la BBDD");
 		//Crear conexion  
-		Connection conexion = DriverManager.getConnection(url, user, pass);
+		
+		/*Connection conexion = */ DriverManager.getConnection(url, user, pass);
 		System.out.println("Conexion exitosa!!!");
 		
 	} catch (Exception e) {

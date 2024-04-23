@@ -1,8 +1,12 @@
 package com.mihuella;
 
-public class UbicacionGeografica {
+import lombok.Getter;
+import lombok.Setter;
 
+public class UbicacionGeografica {
+	@Getter @Setter
 	private String latitud;
+	@Getter @Setter
 	private String longitud;
 
 	public UbicacionGeografica(String latitud, String longitud) {
