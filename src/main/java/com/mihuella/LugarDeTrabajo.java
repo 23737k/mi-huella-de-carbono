@@ -2,17 +2,16 @@ package com.mihuella;
 
 import lombok.*;
 
+@Getter
+@Setter
+@NoArgsConstructor
 public class LugarDeTrabajo {
-	@Getter
-	@Setter
 	private Organizacion organizacion;
-	@Getter
-	@Setter
-	private Area area;
+	private Sector sector;
 
-	public LugarDeTrabajo(Organizacion organizacion, Area area) {
+	public LugarDeTrabajo(Organizacion organizacion, Sector sector) {
 		this.organizacion = organizacion;
-		this.area = area;
+		this.sector = sector;
 	}
 
 }

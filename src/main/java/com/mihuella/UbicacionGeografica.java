@@ -1,12 +1,14 @@
 package com.mihuella;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Getter
+@Setter
+@NoArgsConstructor
 public class UbicacionGeografica {
-	@Getter @Setter
 	private String latitud;
-	@Getter @Setter
 	private String longitud;
 
 	public UbicacionGeografica(String latitud, String longitud) {

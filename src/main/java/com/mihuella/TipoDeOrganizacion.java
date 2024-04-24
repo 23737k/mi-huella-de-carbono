@@ -2,8 +2,10 @@ package com.mihuella;
 
 import lombok.*;
 
+@Getter
+@Setter
+@NoArgsConstructor
 public class TipoDeOrganizacion {
-	@Getter @Setter
 	private String nombre;
 
 

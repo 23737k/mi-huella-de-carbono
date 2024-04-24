@@ -3,21 +3,16 @@ package com.mihuella;
 import lombok.*;
 import java.util.List;
 
+import org.apache.jasper.tagplugins.jstl.core.ForEach;
+
+@Getter
+@Setter
+@NoArgsConstructor
 public class Miembro {
-	@Getter
-	@Setter
 	private String nombre;
-	@Getter
-	@Setter
 	private String apellido;
-	@Getter
-	@Setter
 	private TipoDoc tipoDeDocumento;
-	@Getter
-	@Setter
 	private String nroDocumento;
-	@Getter
-	@Setter
 	private List<LugarDeTrabajo> lugaresDeTrabajo;
 
 	public Miembro(String nombre, String apellido, TipoDoc tipoDeDocumento, String nroDocumento,
@@ -27,6 +22,8 @@ public class Miembro {
 		this.tipoDeDocumento = tipoDeDocumento;
 		this.nroDocumento = nroDocumento;
 		this.lugaresDeTrabajo = lugaresDeTrabajo;
+		
+		lugaresDeTrabajo.forEach(lugar -> lugar.getOrganizacion().agregarPostulacion(this));
 	}
 
 }

@@ -1,9 +1,11 @@
 package com.mihuella;
 import lombok.*;
 
+@Getter
+@Setter
+@NoArgsConstructor
 public class Area {
 	
-	@Getter @Setter
 	private String nombre;
 
 	public Area(String nombre) {

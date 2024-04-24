@@ -1,5 +1,12 @@
 package com.mihuella;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
 public class Tramo {
   private UbicacionGeografica inicio;
   private UbicacionGeografica fin;
@@ -10,32 +17,5 @@ public class Tramo {
     this.fin = fin;
     this.medioDeTransporte = medioDeTransporte;
   }
-
-  //region getters-setters
-  public UbicacionGeografica getInicio() {
-    return inicio;
-  }
-
-  public void setInicio(UbicacionGeografica inicio) {
-    this.inicio = inicio;
-  }
-
-  public UbicacionGeografica getFin() {
-    return fin;
-  }
-
-  public void setFin(UbicacionGeografica fin) {
-    this.fin = fin;
-  }
-
-  public MedioDeTransporte getMedioDeTransporte() {
-    return medioDeTransporte;
-  }
-
-  public void setMedioDeTransporte(MedioDeTransporte medioDeTransporte) {
-    this.medioDeTransporte = medioDeTransporte;
-  }
-
-  //endregion getters-setters
 
 }

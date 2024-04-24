@@ -1,26 +1,18 @@
 package com.mihuella;
 
-import com.opencsv.bean.CsvBindByName;
 import lombok.*;
 
+@Getter
+@Setter
+@NoArgsConstructor
 public class Medicion {
-  @CsvBindByName(column = "actividad")
-  @Getter @Setter
   private Actividad actividad;
-  @CsvBindByName(column = "tipo-de-consumo")
-  @Getter @Setter
-  private String tipoDeConsumo;
-  @CsvBindByName(column = "valor-consumo")
-  @Getter @Setter
+  private TipoDeConsumo tipoDeConsumo;
   private Double valorConsumo;
-  @CsvBindByName(column = "periodicidad-consumo")
-  @Getter @Setter
   private Periodicidad periodicidadConsumo;
-  @CsvBindByName(column = "periodo-de-imputacion")
-  @Getter @Setter
   private String periodoDeImputacion;
 
-  public Medicion(Actividad actividad, String tipoDeConsumo, Double valorConsumo,
+  public Medicion(Actividad actividad, TipoDeConsumo tipoDeConsumo, Double valorConsumo,
                   Periodicidad periodicidadConsumo, String periodoDeImputacion) {
     this.actividad = actividad;
     this.tipoDeConsumo = tipoDeConsumo;
@@ -29,8 +21,6 @@ public class Medicion {
     this.periodoDeImputacion = periodoDeImputacion;
   }
 
-  public Medicion() {
-  }
 
 }
 

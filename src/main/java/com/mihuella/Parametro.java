@@ -1,33 +1,33 @@
 package com.mihuella;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "parametros")
+@Table(name = "parametro")
+@Getter
+@Setter
+@NoArgsConstructor
 public class Parametro {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Getter @Setter
 	private int id;
-	@Getter @Setter
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Actividad actividad;
-	@Getter @Setter
-	private String tipoDeConsumo;
-	@Getter @Setter
+	@ManyToOne(cascade = CascadeType.ALL)
+	private TipoDeConsumo tipoDeConsumo;
 	private Double fe;
+	private String unidad;
+	
 
-	// CONSTRUCTOR SIN PARAMETROS
-	public Parametro() {
-	}
-
-	public Parametro(Actividad actividad, String tipoDeConsumo, Double fe) {
+	public Parametro(Actividad actividad, TipoDeConsumo tipoDeConsumo, Double fe, String unidad) {
 		this.tipoDeConsumo = tipoDeConsumo;
 		this.fe = fe;
 		this.actividad = actividad;
+		this.unidad = unidad;
 	}
 
 	

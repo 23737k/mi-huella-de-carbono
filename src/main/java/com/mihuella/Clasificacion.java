@@ -1,8 +1,9 @@
 package com.mihuella;
 import lombok.*;
-
+@Getter
+@Setter
+@NoArgsConstructor
 public class Clasificacion {
-	@Getter @Setter
 	private String nombre;
 
 	public Clasificacion(String nombre) {

@@ -5,21 +5,27 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+
 
 @Entity
-@Table(name = "actividad")
+@Table(name = "tipoDeConsumo")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Actividad {
+public class TipoDeConsumo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String nombre;
 	
-	public Actividad (String nombre) {
+	public TipoDeConsumo(String nombre) {
 		this.nombre = nombre;
 	}
 	
+	
+
 }
