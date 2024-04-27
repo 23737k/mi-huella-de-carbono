@@ -1,7 +1,7 @@
 ### Ejecución de la Aplicación de Consola
 
 ```markdown
-mvn compile exec:java -Dexec.mainClass="com.mihuella.App" -Dexec.args="-m src/main/resources/mediciones.csv -p src/main/resources/parametros.csv"
+mvn compile exec:java -Dexec.mainClass="com.mihuella.App" -Dexec.args="-m src/main/resources/mediciones.csv -p src/main/resources/factorDeEmisions.csv"
 
 ```
 

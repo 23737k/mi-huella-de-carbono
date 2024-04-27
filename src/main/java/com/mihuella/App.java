@@ -33,20 +33,21 @@ public class App {
 	  
 	  //Ademas de las anotaciones de JPA debo agregar las clases que van a ser persistidas (entities).
 	  //Aqui agrego las clases Parametro y Mediciones. Mas adelante veremos como hacer esto de forma automatica con la ayuda de SpringBoot
-	 SessionFactory sessionFactory =  new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Parametro.class).
+	 SessionFactory sessionFactory =  new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(
+					 FactorDeEmision.class).
 			 addAnnotatedClass(Actividad.class).addAnnotatedClass(TipoDeConsumo.class).buildSessionFactory();
 	 Session session = sessionFactory.openSession();
-	 
-	 try {
-		Parametro parametro = new Parametro(new Actividad("combustion-fija"),new TipoDeConsumo("nafta"),3.0,"ml");
-		session.beginTransaction();
-		session.persist(parametro);
-		session.getTransaction().commit();
-		session.close();
-		
-	} finally {
-		session.close();
-	}
+//
+//	 try {
+//		FactorDeEmision factorDeEmision = new FactorDeEmision(new Actividad("combustion-fija"),new TipoDeConsumo("nafta"),3.5,"ml");
+//		session.beginTransaction();
+//		session.persist(factorDeEmision);
+//		session.getTransaction().commit();
+//		session.close();
+//
+//	} finally {
+//		session.close();
+//	}
 	 
   }
 

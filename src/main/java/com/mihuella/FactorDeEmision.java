@@ -7,11 +7,11 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "parametro")
+@Table(name = "factor_de_emision")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Parametro {
+public class FactorDeEmision {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -19,13 +19,13 @@ public class Parametro {
 	private Actividad actividad;
 	@ManyToOne(cascade = CascadeType.ALL)
 	private TipoDeConsumo tipoDeConsumo;
-	private Double fe;
+	private Double valor;
 	private String unidad;
 	
 
-	public Parametro(Actividad actividad, TipoDeConsumo tipoDeConsumo, Double fe, String unidad) {
+	public FactorDeEmision(Actividad actividad, TipoDeConsumo tipoDeConsumo, Double valor, String unidad) {
 		this.tipoDeConsumo = tipoDeConsumo;
-		this.fe = fe;
+		this.valor = valor;
 		this.actividad = actividad;
 		this.unidad = unidad;
 	}

@@ -50,4 +50,8 @@ public class Organizacion {
 		postulaciones.remove(miembro);
 		miembros.add(miembro);
 	}
+
+	public Double calcularHuellaTransporte() {
+		return miembros.stream().mapToDouble(m->m.calcularHuella(this)).sum();
+	}
 }

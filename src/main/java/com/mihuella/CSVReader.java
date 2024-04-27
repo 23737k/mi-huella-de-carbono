@@ -18,11 +18,11 @@ class CSVReader {
     }
   }
 
-  public static List<Parametro> leerParametros(String ruta) {
+  public static List<FactorDeEmision> leerParametros(String ruta) {
 
     try {
       return new CsvToBeanBuilder(new FileReader(ruta))
-          .withType(Parametro.class).build().parse();
+          .withType(FactorDeEmision.class).build().parse();
     } catch (FileNotFoundException e) {
       throw new RuntimeException(e);
     }
