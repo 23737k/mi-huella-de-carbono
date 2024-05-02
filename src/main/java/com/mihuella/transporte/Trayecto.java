@@ -1,4 +1,4 @@
-package com.mihuella;
+package com.mihuella.transporte;
 
 import java.util.List;
 
@@ -12,6 +12,8 @@ public class Trayecto {
 
   public Trayecto(List<Tramo> tramos) {
     this.tramos = tramos;
+    this.origen = tramos.get(0).getInicio();
+    this.destino = tramos.get(tramos.size()-1).getFin();
   }
 
   public double calcularHuella() {

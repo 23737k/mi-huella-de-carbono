@@ -1,5 +1,7 @@
-package com.mihuella;
+package com.mihuella.transporte;
 
+import com.mihuella.Miembro;
+import com.mihuella.service.ApiDistanciaService;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.Getter;
@@ -16,21 +18,24 @@ public class Tramo {
   private Transporte transporte;
   private Boolean esCompartido;
   private List<Miembro> compartidoCon;
+  private ApiDistanciaService apiDistanciaService;
 
-  public Tramo(String inicio, String fin, Transporte transporte) {
+  public Tramo(String inicio, String fin, Transporte transporte, ApiDistanciaService apiDistanciaService) {
     this.inicio = inicio;
     this.fin = fin;
     this.transporte = transporte;
     this.compartidoCon = new ArrayList<Miembro>();
     this.esCompartido = false;
+    this.apiDistanciaService = apiDistanciaService;
     this.distanciaEnKm = calcularDistancia(inicio, fin);
   }
-  public Tramo(String inicio, String fin, Transporte transporte,List<Miembro> compartidoCon) {
+  public Tramo(String inicio, String fin, Transporte transporte,ApiDistanciaService apiDistanciaService, List<Miembro> compartidoCon) {
     this.inicio = inicio;
     this.fin = fin;
     this.transporte = transporte;
     this.esCompartido = true;
     this.compartidoCon.addAll(compartidoCon);
+    this.apiDistanciaService = apiDistanciaService;
     this.distanciaEnKm = calcularDistancia(inicio, fin);
   }
 
@@ -41,10 +46,6 @@ public class Tramo {
   }
 
   public Double calcularDistancia(String inicio, String fin){
-    //TODO conectar con api distancia
-    return 5.5;
+    return apiDistanciaService.calcularDistancia(inicio,fin);
   }
-
-
-
 }

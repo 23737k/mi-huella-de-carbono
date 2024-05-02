@@ -1,5 +1,6 @@
 package com.mihuella;
 
+import com.mihuella.transporte.Trayecto;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.*;

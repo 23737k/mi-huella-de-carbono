@@ -15,7 +15,7 @@ public class Miembro {
 	private String apellido;
 	private TipoDoc tipoDeDocumento;
 	private String nroDocumento;
-	private List<LugarDeTrabajo> lugaresDeTrabajo;
+	private List<LugarDeTrabajo> lugaresDeTrabajo = new ArrayList<>();
 
 	public Miembro(String nombre, String apellido, TipoDoc tipoDeDocumento, String nroDocumento,
 			List<LugarDeTrabajo> lugaresDeTrabajo) {
@@ -24,13 +24,12 @@ public class Miembro {
 		this.tipoDeDocumento = tipoDeDocumento;
 		this.nroDocumento = nroDocumento;
 		this.lugaresDeTrabajo = lugaresDeTrabajo;
-		//TODO en caso de ser nulo, inicializar con new ArrayList<>()
 		lugaresDeTrabajo.forEach(lugar -> lugar.getOrganizacion().agregarPostulacion(this));
 	}
 
 	public Double calcularHuella(Organizacion organizacion){
 		Optional<LugarDeTrabajo> organizacion1 = lugaresDeTrabajo.stream().filter(l -> l.getOrganizacion().equals(organizacion)).findFirst();
-		if(organizacion1.isEmpty()) throw new RuntimeException("No se encontro el lugar de trabajo");
+		if(organizacion1.isEmpty()) throw new RuntimeException("No se encontro la organizacion");
 		LugarDeTrabajo lugar = organizacion1.get();
 		return lugar.calcularHuella();
 	}

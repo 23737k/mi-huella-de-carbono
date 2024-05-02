@@ -21,7 +21,7 @@ public class CalculoHUFacade {
   public static Double calcularHuellaXMedicion(Medicion medicion, List<FactorDeEmision> factorDeEmisions){
     FactorDeEmision factorDeEmision = factorDeEmisions.stream().filter(p -> p.getTipoDeConsumo().equals(medicion.getTipoDeConsumo())).findFirst().get();
     if(factorDeEmision == null) throw new RuntimeException("no se encontro parametro");
-    return medicion.getValorConsumo() * factorDeEmision.getFe();
+    return medicion.getValorConsumo() * factorDeEmision.getValor();
   }
   
   public static void mostrarCalculoHuella(String[] args) {
