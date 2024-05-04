@@ -1,10 +1,10 @@
 package com.mihuella;
 
+import com.opencsv.bean.CsvToBeanBuilder;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.List;
 
-import com.opencsv.bean.CsvToBeanBuilder;
 
 class CSVReader {
 

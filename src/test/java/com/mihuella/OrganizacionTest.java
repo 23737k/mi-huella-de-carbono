@@ -1,11 +1,11 @@
 package com.mihuella;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import org.junit.*;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 public class OrganizacionTest {
 
@@ -13,7 +13,7 @@ public class OrganizacionTest {
 	private static List<Sector> sectores;
 	private static Miembro miembro;
 
-	@BeforeClass
+	@BeforeAll
 	public static void setUp() {
 		sectores = new ArrayList<>();
 		sectores.add(new Sector("RRHH"));
@@ -29,13 +29,13 @@ public class OrganizacionTest {
 		lugaresDeTrabajo.add(new LugarDeTrabajo(organizacion, organizacion.getSectores().get(1)));
 		miembro = new Miembro("Pedro", "Sanchez", TipoDoc.DNI, "40747720", lugaresDeTrabajo);
 
-		assertThat(organizacion.getPostulaciones().contains(miembro) && !organizacion.getMiembros().contains(miembro));
+		assertTrue(organizacion.getPostulaciones().contains(miembro) && !organizacion.getMiembros().contains(miembro));
 	}
 
 	@Test
 	public void aceptarVinculacion() {
 		organizacion.aceptarVinculacion(miembro);
-		assertThat(organizacion.getMiembros().contains(miembro) && !organizacion.getPostulaciones().contains(miembro));
+		assertTrue(organizacion.getMiembros().contains(miembro) && !organizacion.getPostulaciones().contains(miembro));
 
 	}
 

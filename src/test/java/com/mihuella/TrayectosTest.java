@@ -1,7 +1,6 @@
 package com.mihuella;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -11,8 +10,8 @@ import com.mihuella.transporte.Transporte;
 import com.mihuella.transporte.Trayecto;
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 public class TrayectosTest {
   private static FactorDeEmision feAuto;
@@ -24,7 +23,7 @@ public class TrayectosTest {
   private static Tramo tramoB;
   private static Trayecto trayecto;
 
-  @BeforeClass
+  @BeforeAll
   public static void setUp(){
 
     feAuto = mock(FactorDeEmision.class);

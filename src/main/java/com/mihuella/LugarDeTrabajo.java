@@ -23,7 +23,7 @@ public class LugarDeTrabajo {
 		this.trayectos.add(trayecto);
 	}
 	public Double calcularHuella(){
-		return trayectos.stream().mapToDouble(t->t.calcularHuella()).sum();
+		return trayectos.stream().mapToDouble(Trayecto::calcularHuella).sum();
 	}
 
 }
