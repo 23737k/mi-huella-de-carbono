@@ -12,7 +12,7 @@ public class ApiDistanciaTest {
   @Test
   public void calcularDistancia() {
     ApiDistanciaService apiDistanciaService = new ApiDistanciaImpl();
-    assertEquals(1.9, apiDistanciaService.calcularDistancia("avenida belgrano 2928,caba","avenida san juan 3002,caba"),0.2);
+    assertEquals(1.2, apiDistanciaService.calcularDistancia("avenida belgrano 2928,caba","avenida san juan 3002,caba"),0.2);
   }
 
 

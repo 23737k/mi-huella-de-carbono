@@ -1,6 +1,6 @@
 package com.mihuella.transporte;
 
-import com.mihuella.Miembro;
+import com.mihuella.miembro.Miembro;
 import com.mihuella.service.ApiDistanciaService;
 import java.util.ArrayList;
 import java.util.List;

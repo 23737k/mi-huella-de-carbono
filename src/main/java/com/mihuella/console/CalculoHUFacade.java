@@ -1,5 +1,7 @@
-package com.mihuella;
+package com.mihuella.console;
 
+import com.mihuella.fe.FactorDeEmision;
+import com.mihuella.fe.Medicion;
 import java.util.List;
 import net.sourceforge.argparse4j.ArgumentParsers;
 import net.sourceforge.argparse4j.inf.ArgumentParser;

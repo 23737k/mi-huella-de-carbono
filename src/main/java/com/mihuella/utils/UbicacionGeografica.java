@@ -1,4 +1,4 @@
-package com.mihuella;
+package com.mihuella.utils;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

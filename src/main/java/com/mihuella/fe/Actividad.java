@@ -1,21 +1,24 @@
-package com.mihuella;
+package com.mihuella.fe;
 
 import jakarta.persistence.*;
 import lombok.*;
 
-@Entity
-@Table(name = "actividad")
+//Lombok
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+//JPA
+@Entity
+@Table(name = "actividad")
 public class Actividad {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 	private String nombre;
-	
+
 	public Actividad (String nombre) {
 		this.nombre = nombre;
 	}
-	
+
 }

@@ -1,6 +1,9 @@
 spring:
   application:
     name: curso-spring
+#Aqui seteo el perfil que utilizará Spring (yml). Lo que hara sera cargar las propiedades de este archivo y luego sobreescribira aquellas que aparezcan en el perfil activo
+  profiles:
+    active: local
   mvc:
     view:
       suffix: .jsp
@@ -15,6 +18,6 @@ spring:
       ddl-auto: update
     database: mysql
     show-sql: true
-
 server:
   port: 80
+

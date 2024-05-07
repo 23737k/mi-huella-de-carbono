@@ -1,6 +1,6 @@
 package com.mihuella.transporte;
 
-import com.mihuella.FactorDeEmision;
+import com.mihuella.fe.FactorDeEmision;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

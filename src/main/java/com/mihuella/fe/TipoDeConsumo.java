@@ -1,20 +1,21 @@
-package com.mihuella;
+package com.mihuella.fe;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import jakarta.persistence.*;
 
 
-@Entity
-@Table(name = "tipoDeConsumo")
+//Lombok
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+//JPA
+@Entity
+@Table(name = "tipo_de_consumo")
 public class TipoDeConsumo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 	private String nombre;
 	
 	public TipoDeConsumo(String nombre) {

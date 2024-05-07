@@ -1,4 +1,4 @@
-package com.mihuella;
+package com.mihuella.fe;
 
 public enum Periodicidad {
   MENSUAL,

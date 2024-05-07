@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import com.mihuella.fe.FactorDeEmision;
 import com.mihuella.service.ApiDistanciaService;
 import com.mihuella.transporte.Tramo;
 import com.mihuella.transporte.Transporte;
@@ -56,7 +57,7 @@ public class TrayectosTest {
     List<Tramo> tramos = new ArrayList<>();
     tramos.add(tramoA);
     tramos.add(tramoB);
-    trayecto = new Trayecto(tramos);
+    trayecto = Trayecto.builder().tramos(tramos).build();
     assertEquals(82.6, (double) trayecto.calcularHuella(),0.01);
 
   }
@@ -66,7 +67,7 @@ public class TrayectosTest {
     List<Tramo> tramos = new ArrayList<>();
     tramos.add(tramoA);
     tramos.add(tramoB);
-    trayecto = new Trayecto(tramos);
+    trayecto = Trayecto.builder().tramos(tramos).build();
     assertEquals(22.0, trayecto.calcularDistancia(),0.01);
   }
 

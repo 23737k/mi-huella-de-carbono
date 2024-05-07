@@ -1,4 +1,4 @@
-package com.mihuella;
+package com.mihuella.utils;
 
 public enum TipoDoc {
   DNI,

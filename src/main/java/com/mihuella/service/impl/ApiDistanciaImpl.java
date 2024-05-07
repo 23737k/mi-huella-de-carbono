@@ -21,7 +21,7 @@ public class ApiDistanciaImpl implements ApiDistanciaService {
   @Override
   public Double calcularDistancia(String origen, String destino) {
     String queryParams = "&origins=" + origen + "&destinations=" + destino;
-    String apiUrl = URL + "?" + KEY + queryParams;
+    String apiUrl = URL + "?" + KEY + queryParams + "&mode=walking";
     JsonNode response = restTemplate.getForObject(apiUrl, JsonNode.class);
     Double distance;
     if (response != null) {

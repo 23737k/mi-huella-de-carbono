@@ -1,23 +1,23 @@
-package com.mihuella;
+package com.mihuella.fe;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
+import lombok.*;
 import jakarta.persistence.*;
 
-@Entity
-@Table(name = "factor_de_emision")
+//Lombok
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+//JPA
+@Entity
+@Table(name = "factor_de_emision")
 public class FactorDeEmision {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	@ManyToOne(cascade = CascadeType.ALL)
+	private Integer id;
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
 	private Actividad actividad;
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
 	private TipoDeConsumo tipoDeConsumo;
 	private Double valor;
 	private String unidad;

@@ -1,5 +1,7 @@
-package com.mihuella;
+package com.mihuella.console;
 
+import com.mihuella.fe.FactorDeEmision;
+import com.mihuella.fe.Medicion;
 import com.opencsv.bean.CsvToBeanBuilder;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
