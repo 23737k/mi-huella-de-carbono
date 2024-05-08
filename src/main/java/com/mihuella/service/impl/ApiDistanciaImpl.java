@@ -23,7 +23,7 @@ public class ApiDistanciaImpl implements ApiDistanciaService {
     String queryParams = "&origins=" + origen + "&destinations=" + destino;
     String apiUrl = URL + "?" + KEY + queryParams + "&mode=walking";
     JsonNode response = restTemplate.getForObject(apiUrl, JsonNode.class);
-    Double distance;
+    double distance;
     if (response != null) {
       JsonNode distanceNode = response.path("rows").get(0).path("elements").get(0).path("distance").path("value");
       distance = distanceNode.asDouble();

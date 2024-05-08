@@ -9,6 +9,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import java.util.List;
@@ -18,6 +20,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.context.annotation.EnableMBeanExport;
 
 //Lombok
 @Getter
@@ -34,7 +37,8 @@ public class Trayecto {
   private Integer id;
   private String origen;
   private String destino;
-  @Transient
+  @OneToMany
+  @JoinColumn(name = "trayecto_id")
   private List<Tramo> tramos;
 
   public Trayecto(List<Tramo> tramos) {

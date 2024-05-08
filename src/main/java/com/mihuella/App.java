@@ -20,16 +20,6 @@ public class App {
     SpringApplication.run(App.class, args);
   }
 
-  @Bean
-  @Transactional
-  public CommandLineRunner init() {
-    return args -> {
-
-    };
-  }
-
-
-
 
 }
 
