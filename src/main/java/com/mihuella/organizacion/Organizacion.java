@@ -5,6 +5,7 @@ import com.mihuella.fe.Medicion;
 import com.mihuella.miembro.Miembro;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -48,14 +49,14 @@ public class Organizacion {
 	private List<Miembro> postulaciones;
 
 	public Organizacion(String razonSocial, String cuil, TipoDeOrganizacion tipoDeOrganizacion,
-											Clasificacion clasificacion, String direccion, List<Medicion> mediciones) {
+											Clasificacion clasificacion, String direccion) {
 		this.razonSocial = razonSocial;
 		this.cuil = cuil;
 		this.tipoDeOrganizacion = tipoDeOrganizacion;
 		this.clasificacion = clasificacion;
 		this.direccion = direccion;
 		this.sectores = new ArrayList<>();
-		this.mediciones = mediciones;
+		this.mediciones = new ArrayList<>();
 		this.postulaciones = new ArrayList<Miembro>();
 	}
 	

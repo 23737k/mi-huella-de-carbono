@@ -1,18 +1,20 @@
 package com.mihuella;
 
-import com.github.javafaker.Faker;
-import com.mihuella.fe.Actividad;
-import com.mihuella.fe.FactorDeEmision;
-import com.mihuella.fe.Medicion;
-import com.mihuella.fe.Periodicidad;
-import com.mihuella.fe.TipoDeConsumo;
-import com.mihuella.repositories.*;
-import jakarta.transaction.Transactional;
-import java.util.Locale;
-import org.springframework.boot.CommandLineRunner;
+//import com.github.javafaker.Faker;
+//import com.mihuella.fe.Actividad;
+//import com.mihuella.fe.FactorDeEmision;
+//import com.mihuella.fe.Medicion;
+//import com.mihuella.fe.Periodicidad;
+//import com.mihuella.fe.TipoDeConsumo;
+//import com.mihuella.repositories.*;
+//import jakarta.transaction.Transactional;
+//import java.util.Locale;
+//import org.springframework.boot.CommandLineRunner;
+//import org.springframework.context.annotation.Bean;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
+
 
 @SpringBootApplication
 public class App {

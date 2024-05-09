@@ -29,7 +29,7 @@ public class OrganizacionTest {
 	@BeforeAll
 	public static void setUp() {
 		organizacion = new Organizacion("Mercado Libre SRL", "30-70308853-4", new TipoDeOrganizacion("Empresa"),
-				new Clasificacion("Sector Primario"), "Avenida San Juan 3002, CABA", new ArrayList<>());
+				new Clasificacion("Sector Primario"), "Avenida San Juan 3002, CABA");
 		sectores = new ArrayList<>();
 		sectores.add(new Sector("RRHH", organizacion));
 		sectores.add(new Sector("Marketing",organizacion));
