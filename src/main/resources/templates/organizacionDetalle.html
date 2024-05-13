@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: html_head(_,~{})}">
+</head>
+<body>
+<div th:replace="~{fragments :: navbar}"></div>
+<div class="container">
+    <p th:text="${organizacion.getRazonSocial()}"></p>
+    <p th:text="${organizacion.getCuil()}"></p>
+    <p th:text="${organizacion.getTipoDeOrganizacion().getNombre()}"></p>
+    <p th:text="${organizacion.getClasificacion().getNombre()}"></p>
+</div>
+<p th:text="${organizacion.getRazonSocial()}"></p>
+<p th:text="${organizacion.getCuil()}"></p>
+<p th:text="${organizacion.getTipoDeOrganizacion().getNombre()}"></p>
+<p th:text="${organizacion.getClasificacion().getNombre()}"></p>
+</body>
+</html>

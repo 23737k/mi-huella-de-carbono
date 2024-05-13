@@ -1,6 +1,17 @@
 package com.mihuella.dto.request;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import java.util.List;
 
-public record OrganizacionRequestDto (
-    String razonSocial,String cuil, String tipoDeOrganizacion, String clasificacion,
-    String direccion, List<SectorRequestDto> sectores){}
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class OrganizacionRequestDto {
+  private String razonSocial;
+  private String cuil;
+  private String tipoDeOrganizacion;
+  private String clasificacion;
+  private String direccion;
+  private List<SectorRequestDto> sectores;
+}

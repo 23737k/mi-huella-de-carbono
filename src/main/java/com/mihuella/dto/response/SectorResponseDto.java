@@ -1,6 +1,13 @@
 package com.mihuella.dto.response;
 
-public record SectorResponseDto (
-    String nombre
-){
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class SectorResponseDto {
+  private Integer id;
+  private String nombre;
 }

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{ fragments :: html_head(_,~{::link}) }">
+    <link rel="stylesheet" type="text/css" href="/css/form.css">
+</head>
+<body>
+<div th:replace="~{fragments :: navbar}"></div>
+
+<form class="container col-lg-5 ">
+    <div class="mb-3">
+        <label for="razon-social" class="form-label">Razón social</label>
+        <input type="text" class="form-control" id="razon-social" required>
+    </div>
+    <div class="mb-3">
+        <label for="cuil" class="form-label">CUIT</label>
+        <div class="input-group">
+            <input type="text" class="form-control" id="cuil" maxlength="2" pattern="[0-9]{2}"
+                   title="Debe ingresar numeros" required>
+            <span class="input-group-text">-</span>
+            <input type="text" class="form-control" maxlength="8" pattern="[0-9]{8}" title="Debe ingresar numeros"
+                   required>
+            <span class="input-group-text">-</span>
+            <input type="text" class="form-control" maxlength="1" pattern="[0-9]{1}" title="Debe ingresar numeros"
+                   required>
+        </div>
+    </div>
+ 
+    <div class="mb-3">
+        <label for="selectOrganizacion" class="form-label">Organizacion</label>
+        <select id="selectOrganizacion" class="form-select" required onchange="actualizarSectores()" th:object="${organizacionSeleccionada}">
+            <option selected disabled>Seleccione una organización</option>
+            <option th:each="organizacion : ${organizaciones}" th:value="${organizacion.getId()}"
+                    th:text="${organizacion.getRazonSocial()}"></option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="selectSector" class="form-label">Sector</label>
+        <select id="selectSector" class="form-select" th:object="${sectorSeleccionado}">
+            <option selected>Seleccione un sector</option>
+            <!-- Las opciones de ciudades se agregarán dinámicamente aquí -->
+        </select>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<script>
+    function actualizarSectores() {
+        var organizacionSeleccionada = document.getElementById("selectOrganizacion").value;
+        $.ajax({
+            url: "/api/organizacion/sectores",
+            type: "GET",
+            data: {org : organizacionSeleccionada}, // Query strings.
+            success: function (sectores) {
+                // Limpiar el select de tipos de consumo
+                $('#selectSector').empty();
+
+                // Agregar las nuevas opciones de tipos de consumo al select
+                sectores.forEach(function (sector) {
+                    $('#selectSector').append($('<option>', {
+                        value: sector.id,
+                        text: sector.nombre
+                    }));
+                });
+            },
+            error: function () {
+                console.log("Error al obtener los tipos de consumo");
+            }
+        });
+    }
+</script>
+
+
+</body>
+</html>

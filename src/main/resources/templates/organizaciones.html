@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: html_head(_,~{})}">
+</head>
+<body>
+<div th:replace="~{fragments :: navbar}"></div>
+<div class="list-group">
+    
+    <a th:each="organizacion : ${organizaciones}"
+       th:href="@{'/organizaciones/' + ${organizacion.id}}"
+       th:text="${organizacion.razonSocial}"
+       class="list-group-item list-group-item-action">
+    </a>
+    
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <a class="btn btn-primary me-md-2" type="button"  th:href="@{/organizaciones/crearOrganizacion}" style="margin: 20px 10px 0 20px">Agregar organización</a>
+    </div>
+ 
+</div>
+</body>
+</html>

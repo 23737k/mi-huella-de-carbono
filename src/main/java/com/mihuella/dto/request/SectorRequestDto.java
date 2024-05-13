@@ -1,6 +1,12 @@
 package com.mihuella.dto.request;
 
-public record SectorRequestDto (
-    String nombre
-){
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class SectorRequestDto {
+  private String nombre;
 }
