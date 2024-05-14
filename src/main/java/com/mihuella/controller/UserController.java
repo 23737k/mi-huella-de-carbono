@@ -18,18 +18,18 @@ public class UserController {
   }
 
   @GetMapping("login")
-  public String loginPage(){
+  public String loginPage() {
     return "login";
   }
 
   @RequestMapping("signup_form")
-  public String registrationPage(Model model){
+  public String registrationPage(Model model) {
     model.addAttribute("user", new User());
     return "signup_form";
   }
 
   @PostMapping("process_registration")
-  public String createUser(User user){
+  public String createUser(User user) {
     userService.addUser(user);
     return "login";
   }
