@@ -3,7 +3,9 @@ package com.mihuella.controller;
 import com.mihuella.dto.request.OrganizacionRequestDto;
 import com.mihuella.dto.response.OrganizacionResponseDto;
 import com.mihuella.dto.response.SectorResponseDto;
+import com.mihuella.security.User;
 import com.mihuella.service.OrganizacionService;
+import com.mihuella.service.UserService;
 import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,9 +18,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/organizacion")
 public class OrganizacionController {
 	private OrganizacionService orgService;
+	private UserService userService;
 
-	public OrganizacionController(OrganizacionService orgService) {
+	public OrganizacionController(OrganizacionService orgService, UserService userService) {
 		this.orgService = orgService;
+		this.userService = userService;
 	}
 
 	@GetMapping("/")
@@ -35,7 +39,6 @@ public class OrganizacionController {
 	public List<SectorResponseDto> sectores(@RequestParam("org")Integer id){
 		return orgService.findById(id).getSectores();
 	}
-
 
 
 }
