@@ -15,19 +15,16 @@ public class FactorDeEmision {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-	private Actividad actividad;
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-	private TipoDeConsumo tipoDeConsumo;
+//	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+//	private Actividad actividad;
+//	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
 	private Double valor;
-	private String unidad;
 	
 
-	public FactorDeEmision(Actividad actividad, TipoDeConsumo tipoDeConsumo, Double valor, String unidad) {
-		this.tipoDeConsumo = tipoDeConsumo;
+	public FactorDeEmision(/*Actividad actividad, TipoDeConsumo tipoDeConsumo,*/ Double valor) {
+		//this.tipoDeConsumo = tipoDeConsumo;
 		this.valor = valor;
-		this.actividad = actividad;
-		this.unidad = unidad;
+		//this.actividad = actividad;
 	}
 
 	

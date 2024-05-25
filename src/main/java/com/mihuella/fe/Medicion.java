@@ -1,5 +1,6 @@
 package com.mihuella.fe;
 
+import com.mihuella.organizacion.Organizacion;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -33,16 +34,22 @@ public class Medicion {
   @Enumerated(EnumType.STRING)
   private Periodicidad periodicidadConsumo;
   private String periodoDeImputacion;
+  @ManyToOne(cascade = CascadeType.MERGE)
+  private Organizacion organizacion;
 
   public Medicion(Actividad actividad, TipoDeConsumo tipoDeConsumo, Double valorConsumo,
-                  Periodicidad periodicidadConsumo, String periodoDeImputacion) {
+                  Periodicidad periodicidadConsumo, String periodoDeImputacion, Organizacion organizacion) {
     this.actividad = actividad;
     this.tipoDeConsumo = tipoDeConsumo;
     this.valorConsumo = valorConsumo;
     this.periodicidadConsumo = periodicidadConsumo;
     this.periodoDeImputacion = periodoDeImputacion;
+    this.organizacion = organizacion;
   }
 
+  public double calcularHuella(){
+    return tipoDeConsumo.getFactorDeEmision().getValor() * valorConsumo;
+  }
 
 
 }

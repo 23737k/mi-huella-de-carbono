@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: html_head(_,~{::link})}">
+    <link rel="stylesheet" type="text/css" href="/css/form.css">
+</head>
+<body>
+<div th:replace="~{fragments :: navbar}"></div>
+<div class="container col-lg-5 mt-5">
+    <h1 class="text-center">Agregar nueva medición</h1>
+    
+    <form th:action="@{procesar-formulario}" th:method="post" th:object="${medicion}" id="medicion-form">
+        
+        <div class="mb-3">
+            <label class="form-label" for="selectOrganizacion">Organización</label>
+            <select class="form-select" id="selectOrganizacion" required th:field="*{organizacion}">
+                <option th:selected th:disabled value="" >Seleccione una organización</option>
+                <option th:each="organizacion : ${organizaciones}" th:text="${organizacion.razonSocial}" th:value="${organizacion.id}"></option>
+            </select>
+        </div>
+        
+        <div class="mb-3">
+            <label for="selectActividad" class="form-label">Actividad</label>
+            <select id="selectActividad" class="form-select" required th:field="*{actividad}">
+                <option th:selected th:disabled value="" >Seleccione una actividad</option>
+                <option th:each="actividad : ${actividades}" th:value="${actividad.id}"
+                        th:text="${actividad.nombre}"></option>
+            </select>
+        </div>
+        
+        <div class="mb-3">
+            <label for="selectTipoDeConsumo" class="form-label">Tipo de Consumo</label>
+            <select id="selectTipoDeConsumo" class="form-select" th:field="*{tipoDeConsumo}">
+                <option selected disabled value="">Seleccione un tipo de consumo</option>
+                <!-- Las opciones de tipo de consumo se agregarán dinámicamente aquí -->
+            </select>
+        </div>
+        
+        <div class="mb-3">
+            <label for="valorConsumo" class="form-label">Valor de Consumo:</label>
+            <div class="input-group">
+                <input type="number" class="form-control" id="valorConsumo" th:field="*{valorConsumo}" required>
+                <span class="input-group-text" id="unidadDeConsumo"></span>
+            </div>
+        </div>
+        
+        <div class="mb-3">
+            <label class="form-label">Periodicidad de Consumo:</label><br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="anual" name="periodicidadConsumo" value="ANUAL" th:field="*{periodicidadConsumo}" required>
+                <label class="form-check-label" for="anual">Anual</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="mensual" name="periodicidadConsumo" value="MENSUAL" th:field="*{periodicidadConsumo}" required>
+                <label class="form-check-label" for="mensual">Mensual</label>
+            </div>
+        </div>
+        
+        <div class="mb-3" id="periodo-anual" style="display:none;">
+            <label for="anio" class="form-label">Año:</label>
+            <input type="number" min="1900" max="2099" step="1" class="form-control" id="anio">
+        </div>
+        
+        <div class="mb-3" id="periodo-mensual" style="display:none;">
+            <label for="mes" class="form-label">Mes y Año:</label>
+            <input type="month" class="form-control" id="mes">
+        </div>
+        
+        <input type="hidden" th:field="*{periodoDeImputacion}" id="periodoDeImputacion">
+        
+        
+        <button type="submit" class="btn btn-primary d-grid gap-2 d-md-block mt-3">Submit</button>
+    </form>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const anualRadio = document.getElementById('anual');
+        const mensualRadio = document.getElementById('mensual');
+        const periodoAnual = document.getElementById('periodo-anual');
+        const periodoMensual = document.getElementById('periodo-mensual');
+        const selectActividad = document.getElementById('selectActividad');
+        const selectTipoDeConsumo = document.getElementById('selectTipoDeConsumo');
+        const anioInput = document.getElementById('anio');
+        const mesInput = document.getElementById('mes');
+        const periodoDeImputacionHidden = document.getElementById('periodoDeImputacion');
+
+        function togglePeriodo() {
+            if (anualRadio.checked) {
+                periodoAnual.style.display = 'block';
+                periodoMensual.style.display = 'none';
+                document.getElementById('anio').required = true;
+                document.getElementById('mes').required = false;
+            } else if (mensualRadio.checked) {
+                periodoAnual.style.display = 'none';
+                periodoMensual.style.display = 'block';
+                document.getElementById('anio').required = false;
+                document.getElementById('mes').required = true;
+            }
+        }
+
+        anualRadio.addEventListener('change', togglePeriodo);
+        mensualRadio.addEventListener('change', togglePeriodo);
+
+        togglePeriodo();
+        
+        document.getElementById('medicion-form').addEventListener('submit', function(event) {
+            if (anualRadio.checked) {
+                periodoDeImputacionHidden.value = anioInput.value;
+            } else if (mensualRadio.checked) {
+                periodoDeImputacionHidden.value = mesInput.value;
+            }
+        });
+
+        selectActividad.addEventListener('change', function actualizarSectores() {
+            let actividadSeleccionada = document.getElementById("selectActividad").value;
+            let unidadDeConsumo = document.getElementById('unidadDeConsumo');
+            $.ajax({
+                url: "/api/actividades/" + actividadSeleccionada + "/sectores",
+                type: "GET",
+                success: function (tiposDeConsumo) {
+                    // Limpiar el select de tipos de consumo
+                    $('#selectTipoDeConsumo').empty();
+                    $('#selectTipoDeConsumo').append('<option selected disabled value="">Seleccione un tipo de consumo</option>');
+
+                    // Agregar las nuevas opciones de tipos de consumo al select
+                    tiposDeConsumo.forEach(function (tipoDeConsumo) {
+                        $('#selectTipoDeConsumo').append($('<option>', {
+                            value: tipoDeConsumo.id,
+                            text: tipoDeConsumo.nombre,
+                            unity: tipoDeConsumo.unidad
+                        }));
+                    });
+                },
+                error: function () {
+                    console.log("Error al obtener los tipos de consumo");
+                }
+            });
+        });
+
+        function cambiarUnidad() {
+            let unidadDeConsumoElement = document.getElementById('unidadDeConsumo');
+            let selectedOption = selectTipoDeConsumo.options[selectTipoDeConsumo.selectedIndex];
+            if (selectedOption) {
+                unidadDeConsumoElement.innerText = selectedOption.getAttribute('unity');
+            }
+        }
+
+        selectTipoDeConsumo.addEventListener('change', cambiarUnidad);
+    });
+</script>
+</body>
+</html>

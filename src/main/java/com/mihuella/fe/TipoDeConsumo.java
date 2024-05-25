@@ -17,6 +17,9 @@ public class TipoDeConsumo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nombre;
+	private String unidad;
+	@OneToOne
+	private FactorDeEmision factorDeEmision;
 	
 	public TipoDeConsumo(String nombre) {
 		this.nombre = nombre;

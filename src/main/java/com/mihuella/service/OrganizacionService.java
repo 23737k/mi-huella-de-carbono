@@ -13,9 +13,9 @@ public interface OrganizacionService {
 
   OrganizacionRequestDto save(OrganizacionRequestDto dto);
 
-  List<OrganizacionResponseDto> findAll();
+  List<Organizacion> findAll();
 
-  OrganizacionResponseDto findById(Integer id);
+  Organizacion findById(Integer id);
 
   List<TipoDeOrganizacion> getTipoDeOrganizaciones();
 

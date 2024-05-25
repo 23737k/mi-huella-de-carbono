@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="~{fragments :: html_head(_,_)}"></div>
+    
+<body>
+<div th:replace="~{fragments :: navbar}"></div>
+<div class="container mx-auto mt-3">
+    <table class="table table-dark table-striped table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Actividad</th>
+            <th scope="col">Tipo De Consumo</th>
+            <th scope="col">Huella de Carbono (kg de Co2 Equivalentes)</th>
+        </tr>
+        </thead>
+        <tbody class="table-group-divider" th:each="actividadHuella : ${reporte}">
+        <tr>
+            <th scope="row" th:text="${actividadHuella.actividad.nombre}"></th>
+            <td> </td>
+            <td th:text="${actividadHuella.huella}"></td>
+        </tr>
+        <tr th:each="tipoDeConsumoHuella : ${actividadHuella.getTipoDeConsumoHuellaList()}">
+            <th scope="row"></th>
+            <td th:text="${tipoDeConsumoHuella.tipoDeConsumo.nombre}"></td>
+            <td th:text="${tipoDeConsumoHuella.huella}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

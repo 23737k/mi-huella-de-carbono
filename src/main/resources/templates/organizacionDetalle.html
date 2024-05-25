@@ -7,12 +7,8 @@
 <div class="container">
     <p th:text="${organizacion.getRazonSocial()}"></p>
     <p th:text="${organizacion.getCuil()}"></p>
-    <p th:text="${organizacion.getTipoDeOrganizacion().getNombre()}"></p>
-    <p th:text="${organizacion.getClasificacion().getNombre()}"></p>
+    <p th:text="${organizacion.getTipoDeOrganizacion()}"></p>
+    <p th:text="${organizacion.getClasificacion()}"></p>
 </div>
-<p th:text="${organizacion.getRazonSocial()}"></p>
-<p th:text="${organizacion.getCuil()}"></p>
-<p th:text="${organizacion.getTipoDeOrganizacion().getNombre()}"></p>
-<p th:text="${organizacion.getClasificacion().getNombre()}"></p>
 </body>
 </html>

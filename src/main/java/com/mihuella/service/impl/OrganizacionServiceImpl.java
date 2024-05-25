@@ -8,6 +8,7 @@ import com.mihuella.organizacion.Organizacion;
 import com.mihuella.organizacion.Sector;
 import com.mihuella.organizacion.TipoDeOrganizacion;
 import com.mihuella.repositories.ClasificacionRepo;
+import com.mihuella.repositories.MedicionRepo;
 import com.mihuella.repositories.OrganizacionRepo;
 import com.mihuella.repositories.SectorRepo;
 import com.mihuella.repositories.TipoDeOrganizacionRepo;
@@ -75,24 +76,19 @@ public class OrganizacionServiceImpl implements OrganizacionService {
   }
 
   @Override
-  public List<OrganizacionResponseDto> findAll() {
-    List<OrganizacionResponseDto> organizacionesDtos = new ArrayList<>();
-    for (Organizacion organizacion : organizacionRepo.findAll()) {
-      organizacionesDtos.add(toOrganizacionResponseDto(organizacion));
-    }
-    return organizacionesDtos;
+  public List<Organizacion> findAll() {
+    return organizacionRepo.findAll();
   }
 
 
 
   @Override
-  public OrganizacionResponseDto findById(Integer id) {
-
+  public Organizacion findById(Integer id){
     Organizacion org = organizacionRepo.findById(id).orElse(null);
     if(org == null) {
       throw new RuntimeException("No se ha encontrado la organizacion");
     }
-    return toOrganizacionResponseDto(org);
+    return org;
   }
 
   public List<TipoDeOrganizacion> getTipoDeOrganizaciones() {
@@ -101,4 +97,5 @@ public class OrganizacionServiceImpl implements OrganizacionService {
   public List<Clasificacion> getClasificaciones() {
     return clasificacionRepo.findAll();
   }
+
 }

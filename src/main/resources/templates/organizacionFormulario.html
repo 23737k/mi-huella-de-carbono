@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: html_head(_,~{::link})}">
+    <link rel="stylesheet" type="text/css" href="/css/form.css">
+</head>
+<body>
+<div th:replace="~{fragments :: navbar}"></div>
+
+<form class="container col-lg-5" th:action="@{/organizaciones}" th:method="post" th:object="${organizacion}">
+    <div class="mb-3">
+        <label for="razon-social" class="form-label">Razón social</label>
+        <input type="text" class="form-control" id="razon-social" th:field="*{razonSocial}" required>
+    </div>
+    <div class="mb-3">
+        <label for="cuil1" class="form-label">CUIT</label>
+        <div class="input-group">
+            <input type="text" class="form-control" id="cuil1" maxlength="2" pattern="[0-9]{2}"
+                   title="Debe ingresar numeros" required>
+            <span class="input-group-text">-</span>
+            <input type="text" class="form-control" id="cuil2" maxlength="8" pattern="[0-9]{8}"
+                   title="Debe ingresar numeros"
+                   required>
+            <span class="input-group-text">-</span>
+            <input type="text" class="form-control" id="cuil3" maxlength="1" pattern="[0-9]{1}"
+                   title="Debe ingresar numeros"
+                   required>
+        </div>
+        <input type="hidden" th:field="*{cuil}" id="cuilHidden">
+    </div>
+    
+    <div class="mb-3">
+        <label for="selectClasificacion" class="form-label">Clasificación</label>
+        <select id="selectClasificacion" class="form-select" required th:field="*{clasificacion}">
+            <option selected disabled="disabled" value="">Seleccione una clasificación</option>
+            <option th:each="clasificacion : ${clasificaciones}" th:value="${clasificacion.getNombre()}"
+                    th:text="${clasificacion.getNombre()}"></option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="selectTipo" class="form-label">Tipo de organización</label>
+        <select id="selectTipo" class="form-select" th:field="*{tipoDeOrganizacion}">
+            <option selected disabled="disabled" value="">Seleccione un tipo de organización</option>
+            <option th:each="tipo : ${tiposDeOrganizaciones}" th:value="${tipo.getNombre()}"
+                    th:text="${tipo.getNombre()}"></option>
+        </select>
+    </div>
+    
+    <div class="mb-3">
+        <label for="direccion" class="form-label">Dirección</label>
+        <input type="text" class="form-control" id="direccion" th:field="*{direccion}" required>
+    </div>
+    
+    <div class="mb-3">
+        <div class="form-label mb-3">Sectores</div>
+        <div id="sectores-container">
+            <!-- Aquí se agregarán dinámicamente los sectores -->
+        </div>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" id="sector-nombre-input" placeholder="Ingrese el nombre del sector">
+            <button id="agregar-sector" type="button" class="btn btn-primary">Agregar Sector</button>
+        </div>
+    </div>
+    
+    <div>
+        <button type="submit" class="d-grid gap-2 d-md-block btn btn-primary mt-3" id="submit-button">Submit</button>
+    </div>
+
+</form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const elementosContainer = document.getElementById('sectores-container');
+        const agregarElementoBtn = document.getElementById('agregar-sector');
+        const sectorNombreInput = document.getElementById('sector-nombre-input');
+
+        // Contador para los índices de los sectores
+        let sectorIndex = 0;
+
+        // Agregar un nuevo elemento al hacer clic en el botón
+        agregarElementoBtn.addEventListener('click', function() {
+            const sectorNombre = sectorNombreInput.value.trim();
+            if (sectorNombre !== "") {
+                const nuevoElemento = document.createElement('div');
+                nuevoElemento.classList.add('input-group', 'mb-3');
+                nuevoElemento.innerHTML = `
+                    <input type="text" class="form-control sector-nombre" name="sectores[${sectorIndex}].nombre" value="${sectorNombre}" readonly>
+                    <button class="btn btn-outline-secondary editar-sector" type="button">Editar</button>
+                    <button class="btn btn-outline-secondary eliminar-sector" type="button">Eliminar</button>
+                `;
+                elementosContainer.appendChild(nuevoElemento);
+                sectorNombreInput.value = "";
+                sectorIndex++;
+            }
+        });
+
+        // Delegar eventos para eliminar o editar elementos
+        elementosContainer.addEventListener('click', function(event) {
+            if (event.target && event.target.matches('.eliminar-sector')) {
+                event.target.closest('.input-group').remove();
+            } else if (event.target && event.target.matches('.editar-sector')) {
+                const input = event.target.closest('.input-group').querySelector('.sector-nombre');
+                input.readOnly = false;
+                input.focus();
+                event.target.textContent = 'Guardar';
+                event.target.classList.remove('editar-sector');
+                event.target.classList.add('guardar-sector');
+            } else if (event.target && event.target.matches('.guardar-sector')) {
+                const input = event.target.closest('.input-group').querySelector('.sector-nombre');
+                if (input.value.trim() !== "") {
+                    input.readOnly = true;
+                    event.target.textContent = 'Editar';
+                    event.target.classList.remove('guardar-sector');
+                    event.target.classList.add('editar-sector');
+                }
+            }
+        });
+
+        // Obtener los elementos de los campos de entrada
+        var cuil1 = document.getElementById('cuil1');
+        var cuil2 = document.getElementById('cuil2');
+        var cuil3 = document.getElementById('cuil3');
+        var cuilHidden = document.getElementById('cuilHidden');
+
+        // Función para actualizar el campo cuilHidden
+        function updateCuil() {
+            var cuil = cuil1.value + cuil2.value + cuil3.value;
+            cuilHidden.value = cuil;
+        }
+
+        // Escuchar el evento de entrada en los campos de entrada
+        cuil1.addEventListener('input', updateCuil);
+        cuil2.addEventListener('input', updateCuil);
+        cuil3.addEventListener('input', updateCuil);
+    });
+</script>
+
+</body>
+</html>

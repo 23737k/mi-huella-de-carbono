@@ -3,6 +3,8 @@ package com.mihuella.organizacion;
 import com.mihuella.miembro.LugarDeTrabajo;
 import com.mihuella.fe.Medicion;
 import com.mihuella.miembro.Miembro;
+import com.mihuella.reportes.ActividadHuella;
+import com.mihuella.reportes.TipoDeConsumoHuella;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -98,4 +100,38 @@ public class Organizacion {
 	public void agregarSectores(List<Sector> sectores) {
 		this.sectores.addAll(sectores);
 	}
+
+	public double calcularHuellaMediciones(){
+		return mediciones.stream().mapToDouble(Medicion::calcularHuella).sum();
+	}
+
+	public List<ActividadHuella> obtenerReporteHuellaPorCategoria(){
+		List<ActividadHuella> reporte = new ArrayList<>();
+
+		for(Medicion medicion : mediciones) {
+			var huella = medicion.calcularHuella();
+			var actividad = medicion.getActividad();
+			var tipoDeConsumo = medicion.getTipoDeConsumo();
+			var actividadHuella = reporte.stream().filter(a -> a.getActividad().equals(actividad)).findAny().orElse(null);
+
+			if(actividadHuella==null) {
+				List<TipoDeConsumoHuella> tipoDeConsumoHuellaList = new ArrayList<>();
+				tipoDeConsumoHuellaList.add(new TipoDeConsumoHuella(tipoDeConsumo,huella));
+				reporte.add(new ActividadHuella(actividad,huella, tipoDeConsumoHuellaList));
+			}
+			else{
+				var tipoDeConsumoHuella = actividadHuella.getTipoDeConsumoHuellaList().stream().filter(t->t.getTipoDeConsumo().equals(tipoDeConsumo)).findAny().orElse(null);
+
+				if(tipoDeConsumoHuella == null){
+					actividadHuella.addTipoDeConsumoHuella(new TipoDeConsumoHuella(tipoDeConsumo,huella));
+				}
+				else{
+					tipoDeConsumoHuella.setHuella(tipoDeConsumoHuella.getHuella() + huella);
+				}
+				actividadHuella.setHuella(actividadHuella.getHuella() + huella);
+			}
+		}
+		return reporte;
+	}
+
 }
